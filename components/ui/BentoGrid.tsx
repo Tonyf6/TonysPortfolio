@@ -3,7 +3,6 @@
 import { cn } from "@/lib/utils";
 import { BackgroundGradientAnimation } from "./GradientBg";
 import { BackgroundLines } from "./BackgroundLines";
-import { div } from "framer-motion/client";
 import Lottie from "react-lottie";
 import { useState } from "react";
 import animationData from "@/data/confetti.json";
