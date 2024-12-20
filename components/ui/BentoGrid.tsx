@@ -1,5 +1,14 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { BackgroundGradientAnimation } from "./GradientBg";
+import { BackgroundLines } from "./BackgroundLines";
+import { div } from "framer-motion/client";
+import Lottie from "react-lottie";
+import { useState } from "react";
+import animationData from "@/data/confetti.json";
+import BorderMagicButton from "./MagicButton";
+import { IoCopyOutline } from "react-icons/io5";
 
 export const BentoGrid = ({
   className,
@@ -25,6 +34,7 @@ export const BentoGridItem = ({
   className,
   title,
   description,
+
   id,
   img,
   imgClassName,
@@ -41,15 +51,25 @@ export const BentoGridItem = ({
   titleClassName?: string;
   spareImg?: string;
 }) => {
+  // useState to hold our true false
+  const [copied, setCopied] = useState(false);
+
+  // helper functions
+  const handleCopy = () => {
+    navigator.clipboard.writeText("Tonyf6@ymail.com");
+    setCopied(true);
+  };
+
   return (
     <div
       className={cn(
-        "row-span-1 relative rounded-3xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border border-transparent justify-between flex flex-col space-y-4",
+        "row-span-1 relative overflow-hidden rounded-3xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none dark:bg-black dark:border-white/[0.2] bg-white border justify-between flex flex-col space-y-4 border-white/[0.1]",
         className
       )}
       style={{
-        // background: "rgb(98,158,200)",
-background: "linear-gradient(90deg, rgba(98,158,200,1) 0%, rgba(2,0,36,1) 7%, rgba(38,86,105,1) 91%, rgba(69,132,184,1) 95%, rgba(69,71,104,1) 100%, rgba(43,101,142,0.8015581232492998) 100%)"
+        // background: "rgb(238,174,202)",
+
+        background:'linear-gradient(129deg, rgba(33,47,98,1) 46%, rgba(33,128,214,1) 100%)'
       }}
     >
       <div className={`${id === 6 && "flex justify-center h-full"}`}>
@@ -58,7 +78,7 @@ background: "linear-gradient(90deg, rgba(98,158,200,1) 0%, rgba(2,0,36,1) 7%, rg
             <img
               src={img}
               alt={img}
-              className={cn(imgClassName, "object-cover,object-center")}
+              className={cn(imgClassName, "object-cover object-center")}
             />
           )}
         </div>
@@ -72,7 +92,8 @@ background: "linear-gradient(90deg, rgba(98,158,200,1) 0%, rgba(2,0,36,1) 7%, rg
             <img
               src={spareImg}
               alt={spareImg}
-              className={"object-cover, object-center w-full h-full"}
+              // className={"object-cover, object-center w-full h-full"}
+              className={"object-cover object-center w-full h-full"}
             />
           )}
         </div>
@@ -87,7 +108,7 @@ background: "linear-gradient(90deg, rgba(98,158,200,1) 0%, rgba(2,0,36,1) 7%, rg
         <div
           className={cn(
             titleClassName,
-            "group-hover/bento:translate-x-2 transition dura†ion-200 relative md:h-full min-h-40 flex-col px-5 p-5 lg:p-10"
+            "group-hover/bento:translate-x-2 transition duration-200 relative md:h-full min-h-40 flex-col px-5 p-5 lg:p-10"
           )}
         >
           <div className="font-sans font-extralight text-neutral-200 text-sm md:text-xs lg:text-base z-10">
@@ -96,8 +117,72 @@ background: "linear-gradient(90deg, rgba(98,158,200,1) 0%, rgba(2,0,36,1) 7%, rg
           <div className="font-sans font-bold text-lg text-neutral-200 lg:text-3xl max-w-96 z-10">
             {title}
           </div>
+          {id === 2 && (
+            <BackgroundLines>
+              <div></div>
+            </BackgroundLines>
+          )}
+          {id === 3 && (
+            <div className="flex gap-1 lg:gap-5 w-fit relative -right-3 lg:right-2">
+              <div className="flex flex-col relative gap-3 lg:gap-8">
+                {["React.js", "Next.js", "Typescript"].map((item) => (
+                  <span
+                    key={item}
+                    className="py-3 lg:py-4 lg:px-5 px-3 mt-3 text-sx lg:text-base opacity-50 lg:opacity-100 rounded-xl text-center bg-blue-950 text-neutral-200 "
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+              <div className="flex flex-col relative gap-3 lg:gap-8">
+                {["Html", "CSS", "Javascript"].map((item) => (
+                  <span
+                    key={item}
+                    className="py-3 lg:py-4 lg:px-5 px-3 mt-3 text-sx lg:text-base opacity-50 lg:opacity-100 rounded-xl text-center bg-blue-950 text-neutral-200 "
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+              <div className="flex flex-col relative gap-3 lg:gap-8">
+                {["C#", "Tailwind", "MySQL"].map((item) => (
+                  <span
+                    key={item}
+                    className="py-3 lg:py-4 lg:px-5 px-3 mt-3 text-sx lg:text-base opacity-50 lg:opacity-100 rounded-xl text-center bg-blue-950 text-neutral-200 "
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {id === 6 && (
+            <div className="mt-5 relative">
+              <div className="absolute -bottom-5 right-0">
+                <Lottie
+                  options={{
+                    loop: copied,
+                    autoplay: copied,
+                    animationData,
+                    rendererSettings: {
+                      preserveAspectRatio: "xMidyMid slice",
+                    },
+                  }}
+                />
+              </div>
+              <BorderMagicButton
+                title={copied ? " Email copied:" : " Copy my Email"}
+                icon={<IoCopyOutline />}
+                position="left"
+                otherClasses="!bg-[#161e31]"
+                handleClick={handleCopy}
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
 };
+
