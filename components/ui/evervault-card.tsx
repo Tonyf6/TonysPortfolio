@@ -1,30 +1,33 @@
 "use client";
-import { useMotionValue } from "framer-motion";
+import { useMotionValue, MotionValue } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import { useMotionTemplate, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { socialMedia } from "@/data";
 
+interface EvervaultCardProps {
+  className?: string;
+  img?: string;
+  url?: string;
+}
+
 export const EvervaultCard = ({
   className,
   img,
   url,
-}: {
-  className?: string;
-  img?: string;
-  url?: string;
-}) => {
-  let mouseX = useMotionValue(0);
-  let mouseY = useMotionValue(0);
+}: EvervaultCardProps) => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
   const [randomString, setRandomString] = useState("");
 
   useEffect(() => {
-    let str = generateRandomString(1500);
+    const str = generateRandomString(1500);
     setRandomString(str);
   }, []);
 
-  function onMouseMove({ currentTarget, clientX, clientY }: any) {
-    let { left, top } = currentTarget.getBoundingClientRect();
+  function onMouseMove(event: React.MouseEvent<HTMLDivElement>) {
+    const { currentTarget, clientX, clientY } = event;
+    const { left, top } = currentTarget.getBoundingClientRect();
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
     const str = generateRandomString(1500);
@@ -46,7 +49,7 @@ export const EvervaultCard = ({
       onClick={handleClick}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => {
+      onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
         if (e.key === 'Enter' || e.key === ' ') {
           handleClick();
         }
@@ -78,25 +81,15 @@ export const EvervaultCard = ({
   );
 };
 
-// Triple Card Container Component
-export const EvervaultCards = () => {
-  return (
-    <div className="w-full flex flex-col md:flex-row gap-8 items-center justify-center p-8">
-      {socialMedia.map((social) => (
-        <div key={social.id} className="w-full md:w-1/3 aspect-square max-w-xl">
-          <EvervaultCard 
-            img={social.img} 
-            url={social.url}
-          />
-        </div>
-      ))}
-    </div>
-  );
-};
+interface CardPatternProps {
+  mouseX: MotionValue<number>;
+  mouseY: MotionValue<number>;
+  randomString: string;
+}
 
-export function CardPattern({ mouseX, mouseY, randomString }: any) {
-  let maskImage = useMotionTemplate`radial-gradient(250px at ${mouseX}px ${mouseY}px, white, transparent)`;
-  let style = { maskImage, WebkitMaskImage: maskImage };
+export function CardPattern({ mouseX, mouseY, randomString }: CardPatternProps) {
+  const maskImage = useMotionTemplate`radial-gradient(250px at ${mouseX}px ${mouseY}px, white, transparent)`;
+  const style = { maskImage, WebkitMaskImage: maskImage };
 
   return (
     <div className="pointer-events-none">
@@ -117,10 +110,25 @@ export function CardPattern({ mouseX, mouseY, randomString }: any) {
   );
 }
 
+export const EvervaultCards = () => {
+  return (
+    <div className="w-full flex flex-col md:flex-row gap-8 items-center justify-center p-8">
+      {socialMedia.map((social) => (
+        <div key={social.id} className="w-full md:w-1/3 aspect-square max-w-xl">
+          <EvervaultCard 
+            img={social.img} 
+            url={social.url}
+          />
+        </div>
+      ))}
+    </div>
+  );
+};
+
 const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
 export const generateRandomString = (length: number) => {
-  let result = "";
+  let result = ""; // This needs to remain 'let' as it's modified in the loop
   for (let i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * characters.length));
   }
