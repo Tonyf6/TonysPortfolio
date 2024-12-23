@@ -28,7 +28,7 @@ export const navItems = [
     },
     {
       id: 3,
-      title: "AI-Powered Code Review Tool",
+      title: "Current Stack",
       description: "Improving code quality using AI-based suggestions and analysis.",
       className: "lg:col-span-2 md:col-span-3 md:row-span-2",
       imgClassName: "",
@@ -73,7 +73,7 @@ export const navItems = [
     {
       id: 1,
       title: "Barber Booking App",
-      des: "Embark on a visually stunning journey through galaxies with this immersive 3D simulation using Three.js.",
+      des: "A comprehensive full-stack barber booking website that allows users to browse and select barbers, book appointments, and view detailed profiles. Built with React and TypeScript, the site features user authentication, dynamic content rendering, and an intuitive user interface styled with Tailwind CSS. The backend is powered by Node.js and Express, ensuring seamless booking management and real-time updates.",
       img: "/BadGuyBarbers.svg",
       iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
       link: "https://bad-guy-barbers.vercel.app/",
@@ -81,7 +81,7 @@ export const navItems = [
     {
       id: 2,
       title: "Game Catalog",
-      des: "A streamlined virtual meeting solution with real-time chat, screen sharing, and recordings.",
+      des: "A dynamic full-stack game catalog website that allows users to browse and discover games for various consoles. The frontend, built with React and TypeScript, offers an intuitive user experience with advanced filtering and search features.",
       img: "/GameApp.svg",
       iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
       link: "https://game-app-khaki.vercel.app/",
@@ -89,7 +89,7 @@ export const navItems = [
     {
       id: 3,
       title: "Restaurant Site",
-      des: "A SaaS platform to create beautiful designs with AI-assisted tools and integrated payment systems.",
+      des: "A visually appealing restaurant website crafted with HTML and CSS, offering an inviting user experience. This site showcases the menu, highlights special dishes, and provides essential information like location and hours, all within a clean, responsive design.",
       img: "/PuppyRestaurant.svg",
       iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
       link: "https://puppy-restaurant-chi.vercel.app/",
@@ -97,7 +97,7 @@ export const navItems = [
     {
       id: 4,
       title: "Hotel Site",
-      des: "A unique e-commerce experience featuring interactive 3D product displays and smooth animations.",
+      des: "A sleek and elegant hotel website built with HTML and CSS, designed to provide a welcoming and informative experience. Featuring a gallery, room details, and booking information, this site is crafted to be both visually appealing and user-friendly, ensuring guests can easily navigate and make reservations.",
       img: "/HamsterHotel.svg",
       iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
       link: "https://hamster-hotel-two.vercel.app/",
@@ -206,13 +206,16 @@ export const navItems = [
     {
       id: 1,
       img: "/git.svg",
+      url: "https://github.com/yourusername",
     },
     {
       id: 2,
       img: "/twit.svg",
+      url: "https://twitter.com/yourusername",
     },
     {
       id: 3,
       img: "/link.svg",
+      url: "https://linkedin.com/in/yourusername",
     },
   ];
