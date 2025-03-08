@@ -108,32 +108,37 @@ export const navItems = [
     {
       quote:
         "Working with {your name here} was transformative for our business. His creativity and technical expertise allowed us to launch a stunning platform on time and beyond expectations.",
-      name: "Emily Carter",
+      name: "David Carter",
       title: "CEO of Some company",
+      image: "/man1.avif", // Add your image path here
     },
     {
       quote:
         "{your name here} ability to translate complex requirements into user-friendly designs is unmatched. We achieved a 200% increase in user engagement after our project launch.",
       name: "John Thompson",
-      title: "CTO of Some company"
+      title: "CTO of Some company",
+      image: "/man2.avif",
     },
     {
       quote:
         "{your name here} brought fresh ideas and precise execution to our platform redesign. He was professional, proactive, and always delivered high-quality work on time.",
       name: "Sarah Lee",
       title: "Product Manager at Some company",
+      image: "/woman1.avif",
     },
     {
       quote:
         "{your name here} attention to detail and passion for excellence stood out during our collaboration. Our website now reflects our brand perfectly, thanks to his contributions.",
       name: "Marcus Allen",
       title: "Founder of Some company",
+      image: "/man3.avif",
     },
     {
       quote:
         "{your name here} is a rare talent. His understanding of both design and development helped us create a seamless, visually appealing, and performant application.",
       name: "Rachel Green",
       title: "Director of Some company",
+      image: "/woman2.avif",
     },
   ];
   

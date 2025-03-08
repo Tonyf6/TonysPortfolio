@@ -58,7 +58,7 @@ export const BentoGridItem = ({
   }
 
   const handleResume = () => {
-    const resumeUrl = '../TonysResume.pdf'; 
+    const resumeUrl = '../Antonios_Resume.pdf'; 
     const link = document.createElement('a');
     link.href = resumeUrl;
     link.download = 'Tonys_Resume.pdf';
