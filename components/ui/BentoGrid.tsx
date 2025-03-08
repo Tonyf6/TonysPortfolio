@@ -61,7 +61,7 @@ export const BentoGridItem = ({
     const resumeUrl = '../Antonios_Resume.pdf'; 
     const link = document.createElement('a');
     link.href = resumeUrl;
-    link.download = 'Tonys_Resume.pdf';
+    link.download = 'Antonios_Resume.pdf';
     link.click();
   };
 
